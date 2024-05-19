@@ -4,7 +4,9 @@ from sqlalchemy.orm import sessionmaker
 
 engine = create_engine('sqlite:///inventory.db', echo=False)
 Session = sessionmaker(bind=engine)
+session = Session()
 Base = declarative_base()
+
 
 class Product(Base):
     __tablename__ = 'Products'
@@ -13,6 +15,7 @@ class Product(Base):
     product_quantity = Column(Integer)
     product_price = Column(Integer)
     date_updated = Column(Date)
+
 
     def __repr__(self):
         return (f'Product ID: {self.product_id}\n'
